@@ -9,8 +9,6 @@ def Simple_Window():
     time.sleep(5)
     browser.find_element_by_id('sbxJxRegEmail').send_keys('benjaminehuddle@gmail.com')
     time.sleep(5)
-    browser.find_element_by_class_name('recaptcha-anchor').click()
-    time.sleep(5)
     raw_input('Press enter to continue after CAPCHA & logging in')
     time.sleep(5)
     browser.find_element_by_id('loginBtn').click()

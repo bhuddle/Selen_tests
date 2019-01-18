@@ -1,30 +1,46 @@
 from selenium import webdriver
-import pyautogui
 from selenium.webdriver.common.keys import Keys
 import time
 
 def Simple_Window():
-    #depends on screen size and location
-    btn1 = {'x':954 , 'y':566}
-    btn2 = {'x':974 , 'y':560}
-    btn3 = {'x':956 , 'y':609}
-    btn4 = {'x':958 , 'y':654}
-    btn5 = {'x':959 , 'y':698}  
-    
-    browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
+    url = 'http://www.powinenergy.com/news'
+    browser = webdriver.Chrome('C:\Python27\ChromeDriver\chromedriver.exe')
     time.sleep(2)
-    browser.get('https://www.swagbucks.com/p/login')
+    browser.get(url)
     time.sleep(5)
-    browser.find_element_by_id('sbxJxRegEmail').send_keys('benjaminehuddle@gmail.com')
-    time.sleep(5)
-    raw_input('Press enter to continue after CAPCHA & logging in')
-    time.sleep(30)
-    browser.get('https://www.swagbucks.com/surveys')
-    time.sleep(30)
-    #hopefully this starts a survey
-    pyautogui.click(btn1['x'], btn1['y'])
-    raw_input('exit if survey started with CTRL+C')
+    links = browser.find_elements_by_xpath('//a[@href]')
+    print "Number of links: "+str(len(links)) 
+    for link in range(len(links)):
+        link2 = str(links[link].get_attribute('href'))
+        if '#' in link2 or '@' in link2 or 'tel' in link2:
+            print "Skipping:  "+str(links[link].get_attribute('href'))
+            
+        else:
+            print "Clicking: "+str(links[link].get_attribute('href'))
+            links[link].click()
+            time.sleep(5)
+            browser.get(url)
+            time.sleep(5)
+            links = browser.find_elements_by_xpath('//a[@href]')
+        #link.click()
+        ##time.sleep(5)
+        #browser.get(url)
+        #links = browser.find_elements_by_xpath('//a[@href]')
+        #time.sleep(5)
+        
+    #for link in linklist:
+     #   print link
+        
+    #print linklist
     
+    time.sleep(20)
     browser.quit()
 
 Simple_Window()
+
+
+"""
+for checking with assertion:
+url = browser.get_current_url()
+assert url in "url.com/to/test"
+"""

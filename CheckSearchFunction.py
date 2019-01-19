@@ -16,6 +16,7 @@ def Check_Search():
     testText.append('&#160;')
     testText.append('&#160')
     testText.append(u'\xe8 \xe9 \xe10 \xc3 \xc4 \xc5')
+    testText.append('`~`234!@#$%^&)(*+_-=+')
     testText+='^\ \\ \\\\ ^^'.split()
     testText.append('')
     longword = ''

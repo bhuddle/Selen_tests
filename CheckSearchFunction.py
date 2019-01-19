@@ -17,9 +17,9 @@ def Check_Search():
     testText.append('&#160')
     testText.append(u'\xe8 \xe9 \xe10 \xc3 \xc4 \xc5')
     testText+='^\ \\ \\\\ ^^'.split()
-    print testText
+    testText.append('')
     longword = ''
-    for a in range(0,2000):
+    for a in range(0,257):
         longword = longword + 'W'
     testText.append(longword)
     
@@ -32,17 +32,7 @@ def Check_Search():
         time.sleep(5)
         browser.get(url)
         time.sleep(5)
-        
-    
-    """
-    Go to website
-    Enter in Ascii characters
-    Enter in non ascii characters
-    Enter in max # of characters - 256?
-    Escape sequence
-    enter in None
-    """
-    
+       
     time.sleep(5)
     browser.quit()
 

@@ -22,8 +22,7 @@ def test_Check_Res():
         time.sleep(5)
         browser.set_window_size(x,y)
         time.sleep(5)
-        assert browser.get_window_size()['width'] == int(x)
-        assert browser.get_window_size()['height'] == int(y)
+        assert browser.get_window_size()['width'] == int(x) and browser.get_window_size()['height'] == int(y)
     print 'Window Size: Maximized'
     browser.maximize_window()
     assert browser.get_window_size()['width'] == 1936 and browser.get_window_size()['height'] == 1056 #for my own computer res, will change with diff computer
